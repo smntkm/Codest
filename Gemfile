@@ -48,7 +48,9 @@ gem 'spring'
 
 group :development, :test do
 	gem 'rspec-rails'
-	gem 'cucumber'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'webrat'
 	gem 'capybara'
 	gem 'factory_girl_rails'
 end
