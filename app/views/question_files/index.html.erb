@@ -1,0 +1,30 @@
+<h1>Listing question_files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Content type</th>
+      <th>Data</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @question_files.each do |question_file| %>
+      <tr>
+        <td><%= question_file.name %></td>
+        <td><%= question_file.content_type %></td>
+        <td><%= link_to 'Show', question_file %></td>
+        <td><%= link_to 'Edit', edit_question_file_path(question_file) %></td>
+        <td><%= link_to 'Destroy', question_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question file', new_question_file_path %>

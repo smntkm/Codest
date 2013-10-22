@@ -1,0 +1,29 @@
+<%= form_for(@question_file, html: { multitype: true }) do |f| %>
+  <% if @question_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question_file.errors.count, "error") %> prohibited this question_file from being saved:</h2>
+
+      <ul>
+      <% @question_file.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :content_type %><br>
+    <%= f.text_field :content_type %>
+  </div>
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.file_field :data %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
