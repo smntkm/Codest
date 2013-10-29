@@ -35,4 +35,19 @@ describe QuestionFile do
       end
     end
   end
+
+  describe "Relation" do
+    context "問題ファイルから問題に参照がある" do
+      it "正常に問題を参照出来る" do
+        q = FactoryGirl.create(:question)
+        qf = FactoryGirl.build(:question_file)
+
+        qf.question = q
+        qf.save
+
+        qf.question.should be_true
+        qf.question.id.should eq q.id
+      end
+    end
+  end
 end

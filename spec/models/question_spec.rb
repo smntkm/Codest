@@ -7,39 +7,51 @@ describe Question do
     @q = FactoryGirl.build(:question)
   end
 
-  context "登録する場合" do
-    it "titleに'問題1'と設定し登録すると正常に登録出来る" do
-      @q.title = "問題1"
-      @q.should be_valid
-    end
+  describe "validation" do
+    context "登録する場合" do
+      it "titleに'問題1'と設定し登録すると正常に登録出来る" do
+        @q.title = "問題1"
+        @q.should be_valid
+      end
     
-    it "titleが空のままで登録するとエラーになる" do
-      @q.title = nil
-      @q.should be_invalid
+      it "titleが空のままで登録するとエラーになる" do
+        @q.title = nil
+        @q.should be_invalid
+      end
+
+      it ":titleにエラーが設定されている" do
+        @q.title = nil
+        @q.should have(1).errors_on(:title)
+      end
+
+      it "contentに'内容1'と設定し登録すると正常に登録出来る" do
+        @q.content = "内容1"
+        @q.should be_valid
+      end
+
+      it "contentが空のままで登録するとエラーになる" do
+        @q.content = nil
+        @q.should be_invalid
+      end
+
+      it ":titleにエラーが設定されている" do
+        @q.content = nil
+        @q.should have(1).errors_on(:content)
+      end
     end
+  end
 
-    it ":titleにエラーが設定されている" do
-      @q.title = nil
+  describe "Relation" do
+    context "問題から問題ファイルに参照がある" do
+      it "問題から問題ファイルが参照出来る" do
+        qf = FactoryGirl.create(:question_file)
+        q = FactoryGirl.build(:question)
 
-      @q.should have(1).errors_on(:title)
-    end
+        q.question_file = qf
 
-    it "contentに'内容1'と設定し登録すると正常に登録出来る" do
-      @q.content = "内容1"
-      
-      @q.should be_valid
-    end
-
-    it "contentが空のままで登録するとエラーになる" do
-      @q.content = nil
-
-      @q.should be_invalid
-    end
-
-    it ":titleにエラーが設定されている" do
-      @q.content = nil
-
-      @q.should have(1).errors_on(:content)
+        q.question_file.should be_true
+        q.question_file.id.should eq qf.id
+      end
     end
   end
 end
