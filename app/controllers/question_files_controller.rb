@@ -46,8 +46,16 @@ class QuestionFilesController < ApplicationController
   # PATCH/PUT /question_files/1
   # PATCH/PUT /question_files/1.json
   def update
+    @question_file = QuestionFile.find(params[:id])
+
+    file = params[:question_file][:data]
+     
+    @question_file.name = file.original_filename
+    @question_file.content_type = file.content_type
+    @question_file.data = file.read
+
     respond_to do |format|
-      if @question_file.update(question_file_params)
+      if @question_file.save
         format.html { redirect_to @question_file, notice: 'Question file was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,7 +82,7 @@ class QuestionFilesController < ApplicationController
       filename: @question_file.name,
       content_type: @question_file.content_type
     )
-
+    render 'show'
   end
 
   private
