@@ -5,8 +5,8 @@ FactoryGirl.define do
   f = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
 
   factory :question_file do
-    name f.original_filename    #test.rb
-    content_type f.content_type #text/x-ruby-script
-    data f.read                 #test = "test"\n
+    self.name f.original_filename    #test.rb
+    self.content_type f.content_type #text/x-ruby-script
+    self.data f.read                 #test = "test"\n
   end
 end

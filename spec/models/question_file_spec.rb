@@ -25,7 +25,7 @@ describe QuestionFile do
     end
 
     context "値が何もない場合" do
-      it '通常登録出来る' do
+      it '通常登録出来きない' do
         fq = QuestionFile.new()
 
         fq.should be_invalid
@@ -47,6 +47,21 @@ describe QuestionFile do
 
         qf.question.should be_true
         qf.question.id.should eq q.id
+      end
+    end
+  end
+
+  describe "#file_data" do
+    context "問題ファイルのインスタンスが存在する" do
+      it "フィールドが更新される" do
+        s = Dir::pwd.to_s + ("/spec/factories/test.rb")
+        question_file = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
+
+        fq = QuestionFile.new
+        fq.file_data = question_file
+
+        fq.should be_valid
+        fq.name.should eq 'test.rb'
       end
     end
   end

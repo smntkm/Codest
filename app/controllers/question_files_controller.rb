@@ -76,13 +76,12 @@ class QuestionFilesController < ApplicationController
   end
 
   def download
-    @qeustion_file = QuestionFile.find(params[:id])
+    @question_file = QuestionFile.find(params[:id])
     send_data(
       @question_file.data,
       filename: @question_file.name,
       content_type: @question_file.content_type
     )
-    render 'show'
   end
 
   private

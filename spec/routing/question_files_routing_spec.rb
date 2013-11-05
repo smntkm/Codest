@@ -31,5 +31,9 @@ describe QuestionFilesController do
       delete("/question_files/1").should route_to("question_files#destroy", :id => "1")
     end
 
+    it "routes to #download" do
+      get("/question_files/1/download").should route_to("question_files#download", id: "1")
+
+    end
   end
 end

@@ -162,4 +162,14 @@ describe QuestionFilesController do
       response.should redirect_to(question_files_url)
     end
   end
+
+  describe "GET download" do
+    it "ファイルをダウンロード出来る" do
+      question_file = FactoryGirl.build(:question_file)
+      question_file.save
+      get :download, { :id => question_file.to_param }, valid_session
+      #response.should  render_template("show")
+      #response.should redirect_to(question_file_url(question_file.id))
+    end
+  end
 end
