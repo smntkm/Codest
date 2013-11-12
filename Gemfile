@@ -52,5 +52,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'webrat'
 	gem 'capybara'
-	gem 'factory_girl_rails'
+  gem 'capybara-webkit', '1.0.0'
+  gem 'factory_girl_rails'
 end

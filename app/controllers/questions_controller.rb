@@ -20,6 +20,8 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    @question.build_question_file
+    p @question.object_id
   end
 
   # POST /questions
@@ -40,9 +42,6 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    p params
-    p @question.update(question_params)
-     
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }

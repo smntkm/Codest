@@ -26,10 +26,11 @@ describe QuestionsController do
   before(:each) do
     s = Dir::pwd.to_s + ("/spec/factories/test.rb")
     @f = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
-  end
-  let(:question_file_valid_attributes) { { data: @f } }
 
-  let(:valid_attributes) { { "title" => "MyString", "content" => "MyString" , "question_file_attributes" => question_file_valid_attributes} }
+  end
+  let(:question_file_valid_attributes) { { data: @f }}
+
+  let(:valid_attributes) { { "title" => "MyTitile", "content" => "MyContent" , "question_file_attributes" => question_file_valid_attributes} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -66,7 +67,7 @@ describe QuestionsController do
       assigns(:question).should eq(question)
     end
   end
-
+=end
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Question" do
@@ -108,12 +109,11 @@ describe QuestionsController do
       end
     end
   end
-=end
+
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested question" do
         pending
-        question = Question.create! valid_attributes
         # Assuming there are no other questions in the database, this
         # specifies that the Question created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -130,8 +130,12 @@ describe QuestionsController do
       end
 
       it "redirects to the question" do
-        question = Question.create! valid_attributes
-        put :update, {:id => question.to_param, :question => valid_attributes}, valid_session
+        question = FactoryGirl.create(:question)
+
+        get :edit, {:id => question.to_param}
+        assigns(:question).should eq(question)
+        
+        put :update, {:id => question.to_param, :question => valid_attributes}
         response.should redirect_to(question)
       end
     end
