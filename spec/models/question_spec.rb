@@ -42,7 +42,7 @@ describe Question do
   end
 
   describe "Relation" do
-    context "問題から問題ファイルに参照がある" do
+    context "#file" do
       it "問題から問題ファイルが参照出来る" do
         qf = FactoryGirl.create(:question_file)
         q = FactoryGirl.build(:question)
@@ -51,6 +51,19 @@ describe Question do
 
         q.file.should be_true
         q.file_id.should eq qf.id
+      end
+    end
+
+    context "#answers" do
+      specify "問題から解答が参照できる" do
+        question = FactoryGirl.create(:question)
+        a  = FactoryGirl.create(:answer)
+        a2 = FactoryGirl.create(:answer)
+
+        question.answers << a
+        question.answers << a2
+
+        expect(question.answers.size).to eq 2
       end
     end
   end

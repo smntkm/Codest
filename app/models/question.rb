@@ -2,6 +2,7 @@ class Question < ActiveRecord::Base
   validates :title, :content , presence: true
  
   belongs_to :file, class_name: "QuestionFile"
+  has_many :answers, foreign_key: "file_id"
 
   accepts_nested_attributes_for :file
 

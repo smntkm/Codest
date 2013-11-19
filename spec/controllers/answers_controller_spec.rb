@@ -20,10 +20,19 @@ require 'spec_helper'
 
 describe AnswersController do
 
+  before do
+    s = Dir::pwd.to_s + ("/spec/factories/test.rb")
+    @f = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
+    @q =  FactoryGirl.create(:question)
+    @ans_file = FactoryGirl.create(:question_file)
+  end
+  
+  let(:question_file_valid_attributes) { { data: @f }}
   # This should return the minimal set of attributes required to create a valid
   # Answer. As you add validations to Answer, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "user_name" => "MyString", "question_id" => 1, "file_id" => 1, "email" => "hoge@example.com" }}
+
+  let(:valid_attributes) { { "user_name" => "MyString", "question_id" => @q.id, "file_id" => @ans_file.id, "email" => "hoge@example.com", "file_attributes" => question_file_valid_attributes }}
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -75,6 +84,19 @@ describe AnswersController do
         assigns(:answer).should be_persisted
       end
 
+      it "解答ファイルも保存している" do
+        expect {
+          post :create, { answer: valid_attributes }, valid_session
+        }.to change(QuestionFile, :count).by 1
+      end
+
+      it "問題の参照が保存されている" do
+        post :create, {:answer => valid_attributes}, valid_session
+        answer = assigns(:answer)
+        answer.question_id.should eq question.id
+        answer.question.should be_true
+      end
+
       it "redirects to the created answer" do
         post :create, {:answer => valid_attributes}, valid_session
         response.should redirect_to(Answer.last)
@@ -117,7 +139,8 @@ describe AnswersController do
       end
 
       it "redirects to the answer" do
-        answer = Answer.create! valid_attributes
+        answer = FactoryGirl.create(:answer)
+        #answer = Answer.create! valid_attributes
         put :update, {:id => answer.to_param, :answer => valid_attributes}, valid_session
         response.should redirect_to(answer)
       end
