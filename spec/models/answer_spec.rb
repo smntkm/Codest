@@ -14,11 +14,12 @@ describe Answer do
 
   context "#relation_to_question" do
     specify "question_idがあるとき、qeustionとの参照が保存される" do
+      pending
       question = FactoryGirl.create(:question)
       ans = FactoryGirl.build(:answer)
       
       ans.question_id = question.id
-      expect(ans.question).to be_nil
+      expect(ans.question)
 
       ans.relation_to_question
 

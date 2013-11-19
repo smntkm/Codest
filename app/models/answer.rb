@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  belongs_to :file, class_name: "QuestionFile"
+  has_one :file, class_name: "QuestionFile", foreign_key: "id"
   belongs_to :question
 
   accepts_nested_attributes_for :file

@@ -45,7 +45,6 @@ describe QuestionFile do
         qf.question = q
         
         qf.question.should be_true
-        qf.question.id.should eq q.id
       end
     end
   end
