@@ -1,7 +1,7 @@
 class QuestionFile < ActiveRecord::Base
   validates :name, :content_type, :data, presence: true
   
-  belongs_to :question
+  has_one :question, foreign_key: "file_id"
   has_one :answer
 
   def send_file file

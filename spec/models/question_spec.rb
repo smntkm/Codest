@@ -47,10 +47,10 @@ describe Question do
         qf = FactoryGirl.create(:question_file)
         q = FactoryGirl.build(:question)
 
-        q.question_file = qf
+        q.file = qf
 
-        q.question_file.should be_true
-        q.question_file.id.should eq qf.id
+        q.file.should be_true
+        q.file_id.should eq qf.id
       end
     end
   end

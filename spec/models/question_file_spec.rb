@@ -43,8 +43,7 @@ describe QuestionFile do
         qf = FactoryGirl.build(:question_file)
 
         qf.question = q
-        qf.save
-
+        
         qf.question.should be_true
         qf.question.id.should eq q.id
       end
