@@ -58,7 +58,7 @@ describe QuestionFile do
         question_file = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
 
         fq = QuestionFile.new
-        fq.file_data = question_file
+        fq.send_file question_file
 
         fq.should be_valid
         fq.name.should eq 'test.rb'
