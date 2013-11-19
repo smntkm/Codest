@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20131112061927) do
   create_table "answers", force: true do |t|
     t.string   "user_name"
     t.integer  "question_id", null: false
-    t.integer  "answer_id"
+    t.integer  "file_id"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"

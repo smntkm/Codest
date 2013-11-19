@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :answer do
-    user_name "MyString"
-    question_id 1
-    answer_id 1
-    email "MyString"
+    user_name "hoge"
+    question_id  1
+    file { FactoryGirl.create(:question_file) }
+    email "hoge@example.com"
   end
 end

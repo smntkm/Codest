@@ -21,7 +21,6 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
     @question.build_question_file
-    p @question.object_id
   end
 
   # POST /questions

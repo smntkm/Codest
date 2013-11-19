@@ -36,7 +36,7 @@ describe QuestionsController do
   # in order to pass any filters (e.g. authentication) defined in
   # QuestionsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-=begin
+
   describe "GET index" do
     it "assigns all questions as @questions" do
       question = Question.create! valid_attributes
@@ -67,7 +67,7 @@ describe QuestionsController do
       assigns(:question).should eq(question)
     end
   end
-=end
+  
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Question" do
@@ -113,17 +113,12 @@ describe QuestionsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested question" do
-        pending
-        # Assuming there are no other questions in the database, this
-        # specifies that the Question created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Question.any_instance.should_receive(:update).with({ "title" => "MyString" })
-        put :update, {:id => question.to_param, :question => { "title" => "MyString" }}, valid_session
+        question = Question.create! valid_attributes
+        Question.any_instance.should_receive(:update).with({ "title" => "MyString2" })
+        put :update, {:id => question.to_param, :question => { "title" => "MyString2" }}
       end
 
       it "assigns the requested question as @question" do
-        pending
         question = Question.create! valid_attributes
         put :update, {:id => question.to_param, :question => valid_attributes}, valid_session
         assigns(:question).should eq(question)
@@ -139,7 +134,7 @@ describe QuestionsController do
         response.should redirect_to(question)
       end
     end
-=begin
+
     describe "with invalid params" do
       it "assigns the question as @question" do
         question = Question.create! valid_attributes
@@ -172,6 +167,5 @@ describe QuestionsController do
       delete :destroy, {:id => question.to_param}, valid_session
       response.should redirect_to(questions_url)
     end
-=end
   end
 end
