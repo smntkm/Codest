@@ -62,7 +62,8 @@ describe QuestionsController do
 
   describe "GET edit" do
     it "assigns the requested question as @question" do
-      question = Question.create! valid_attributes
+      question = FactoryGirl.create(:question)#Question.create! valid_attributes
+      p question
       get :edit, {:id => question.to_param}, valid_session
       assigns(:question).should eq(question)
     end

@@ -59,6 +59,8 @@ describe Question do
         question = FactoryGirl.create(:question)
         a  = FactoryGirl.create(:answer)
         a2 = FactoryGirl.create(:answer)
+        p a
+        p a2
 
         question.answers << a
         question.answers << a2
