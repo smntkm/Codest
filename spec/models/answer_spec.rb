@@ -11,17 +11,12 @@ describe "FactoryGirl" do
 end
 
 describe Answer do
-
   context "#relation_to_question" do
     specify "question_idがあるとき、qeustionとの参照が保存される" do
-      pending
       question = FactoryGirl.create(:question)
       ans = FactoryGirl.build(:answer)
       
       ans.question_id = question.id
-      expect(ans.question)
-
-      ans.relation_to_question
 
       expect(ans.question).to be_true
     end
@@ -32,17 +27,17 @@ describe Answer do
       specify "user_fileを参照出来る" do
         ans = Answer.new
         qf = FactoryGirl.create(:user_file)
-        ans.file = qf
+        ans.user_file = qf
 
-        expect(ans.file).to be_true
-        expect(ans.file_id).to eq qf.id
+        expect(ans.user_file).to be_true
+        expect(ans.user_file_id).to eq qf.id
       end
     end
 
     context "#question" do
       specify "questionを参照出来る" do
         ans = Answer.new
-        q = FactoryGirl.create(:question, file: nil)
+        q = FactoryGirl.create(:question, user_file: nil)
 
         ans.question = q
 

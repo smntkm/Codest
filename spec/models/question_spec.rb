@@ -1,5 +1,12 @@
 require 'spec_helper'
 #require 'factories/questions'
+#
+describe "FactoryGirl" do
+  specify "FactoryGirlが使える" do
+    q = FactoryGirl.create(:question)
+    expect(q).to be_true
+  end
+end
 
 describe Question do
   #pending "add some examples to (or delete) #{__FILE__}"
@@ -42,15 +49,15 @@ describe Question do
   end
 
   describe "Relation" do
-    context "#file" do
+    context "#user_file" do
       it "問題から問題ファイルが参照出来る" do
         qf = FactoryGirl.create(:user_file)
         q = FactoryGirl.build(:question)
 
-        q.file = qf
+        q.user_file = qf
 
-        q.file.should be_true
-        q.file_id.should eq qf.id
+        q.user_file.should be_true
+        q.user_file_id.should eq qf.id
       end
     end
 

@@ -5,8 +5,8 @@
     <tr>
       <th>User name</th>
       <th>Question</th>
-      <th>Answer</th>
       <th>Email</th>
+      <th>User_File</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,8 +18,8 @@
       <tr>
         <td><%= answer.user_name %></td>
         <td><%= answer.question_id %></td>
-        <td><%= answer.answer_id %></td>
         <td><%= answer.email %></td>
+        <td><%= answer.user_file %></td>
         <td><%= link_to 'Show', answer %></td>
         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

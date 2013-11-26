@@ -30,7 +30,7 @@ describe QuestionsController do
   end
   let(:user_file_valid_attributes) { { data: @f }}
 
-  let(:valid_attributes) { { "title" => "MyTitile", "content" => "MyContent" , "file_attributes" => user_file_valid_attributes} }
+  let(:valid_attributes) { { "title" => "MyTitile", "content" => "MyContent" , "user_file_attributes" => user_file_valid_attributes} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -79,7 +79,7 @@ describe QuestionsController do
         }.to change(Question, :count).by(1)
         
         q = Question.all.first
-        q.file.question.id.should eq q.id
+        q.user_file.question.id.should eq q.id
       end
 
       it "assigns a newly created question as @question" do

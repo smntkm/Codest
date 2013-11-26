@@ -25,7 +25,7 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.fields_for :file_attributes do |qf| %>
+    <%= f.fields_for :user_file_attributes do |qf| %>
       <%= f.label :data %><br>
       <%= f.file_field :data %>
     <% end %>
