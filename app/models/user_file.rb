@@ -1,8 +1,7 @@
 class UserFile < ActiveRecord::Base
   validates :name, :content_type, :data, presence: true
   
-  #belongs_to :question, class_name: "Question", foreign_key: "file_id"
-  belongs_to :question, foreign_key: "id", primary_key: "file_id", class_name: "Question"
+  belongs_to :question, class_name: "Question"
   belongs_to :answer, class_name: "Answer" 
 
   def send_file file
