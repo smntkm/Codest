@@ -5,8 +5,8 @@ class Answer < ActiveRecord::Base
   accepts_nested_attributes_for :user_file
 
   def user_file_attributes= data
-    q_data = data[:data]
+    u_data = data[:data]
     self.build_user_file
-    self.user_file.send_file q_data
+    self.user_file.send_file u_data
   end
 end

@@ -20,9 +20,9 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
-    <%= f.fields_for :user_file_attributes do |qf| %>
-        <%= qf.label :data %><br>
-        <%= qf.file_field :data %>
+    <%= f.fields_for :user_file_attributes do |uf| %>
+        <%= uf.label :data %><br>
+        <%= uf.file_field :data %>
 		<% end %>
   </div>
   <div class="actions">
