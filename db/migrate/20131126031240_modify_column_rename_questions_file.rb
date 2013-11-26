@@ -4,6 +4,6 @@ class ModifyColumnRenameQuestionsFile < ActiveRecord::Migration
   end
 
   def down
-     rename_column :questions, :user_file_id, :file_id
+     rename_column :questions, :user_file_id
   end
 end
