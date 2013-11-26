@@ -1,7 +1,7 @@
 Codest::Application.routes.draw do
   resources :answers
 
-  resources :question_files do
+  resources :user_files do
     member { get 'download' }
   end
 

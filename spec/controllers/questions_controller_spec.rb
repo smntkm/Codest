@@ -28,9 +28,9 @@ describe QuestionsController do
     @f = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
 
   end
-  let(:question_file_valid_attributes) { { data: @f }}
+  let(:user_file_valid_attributes) { { data: @f }}
 
-  let(:valid_attributes) { { "title" => "MyTitile", "content" => "MyContent" , "file_attributes" => question_file_valid_attributes} }
+  let(:valid_attributes) { { "title" => "MyTitile", "content" => "MyContent" , "file_attributes" => user_file_valid_attributes} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in

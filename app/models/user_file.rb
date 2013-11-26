@@ -1,4 +1,4 @@
-class QuestionFile < ActiveRecord::Base
+class UserFile < ActiveRecord::Base
   validates :name, :content_type, :data, presence: true
   
   #belongs_to :question, class_name: "Question", foreign_key: "file_id"

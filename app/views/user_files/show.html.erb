@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user_file.name %>
+</p>
+
+<p>
+  <strong>Content type:</strong>
+  <%= @user_file.content_type %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= link_to 'Download', download_user_file_path(@user_file) %>
+</p>
+
+<%= link_to 'Edit', edit_user_file_path(@user_file) %> |
+<%= link_to 'Back', user_files_path %>

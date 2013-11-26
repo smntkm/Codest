@@ -1,10 +1,10 @@
-<%= form_for(@question_file, html: { multitype: true }) do |f| %>
-  <% if @question_file.errors.any? %>
+<%= form_for(@user_file, html: { multitype: true }) do |f| %>
+  <% if @user_file.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@question_file.errors.count, "error") %> prohibited this question_file from being saved:</h2>
+      <h2><%= pluralize(@user_file.errors.count, "error") %> prohibited this user_file from being saved:</h2>
 
       <ul>
-      <% @question_file.errors.full_messages.each do |msg| %>
+      <% @user_file.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

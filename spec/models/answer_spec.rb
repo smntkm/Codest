@@ -29,9 +29,9 @@ describe Answer do
 
   describe "relation" do
     context "#file" do
-      specify "question_fileを参照出来る" do
+      specify "user_fileを参照出来る" do
         ans = Answer.new
-        qf = FactoryGirl.create(:question_file)
+        qf = FactoryGirl.create(:user_file)
         ans.file = qf
 
         expect(ans.file).to be_true

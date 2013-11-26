@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "FactoryGirl" do
   context "#build" do
     it "正常に使える" do
-      fq = FactoryGirl.build(:question_file)
+      fq = FactoryGirl.build(:user_file)
 
       fq.name.should eq "test.rb"
       fq.content_type.should eq "text/x-ruby-script"
@@ -12,9 +12,9 @@ describe "FactoryGirl" do
   end
 end
 
-describe QuestionFile do
+describe UserFile do
   before(:each) do
-     @fq = FactoryGirl.build(:question_file)
+     @fq = FactoryGirl.build(:user_file)
   end
 
   describe "validate" do
@@ -26,7 +26,7 @@ describe QuestionFile do
 
     context "値が何もない場合" do
       it '通常登録出来きない' do
-        fq = QuestionFile.new()
+        fq = UserFile.new()
 
         fq.should be_invalid
         fq.should have(1).errors_on(:name)
@@ -40,7 +40,7 @@ describe QuestionFile do
     context "問題ファイルから問題に参照がある" do
       it "正常に問題を参照出来る" do
         q = FactoryGirl.create(:question)
-        qf = FactoryGirl.build(:question_file)
+        qf = FactoryGirl.build(:user_file)
 
         qf.question = q
         
@@ -53,10 +53,10 @@ describe QuestionFile do
     context "問題ファイルのインスタンスが存在する" do
       it "フィールドが更新される" do
         s = Dir::pwd.to_s + ("/spec/factories/test.rb")
-        question_file = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
+        user_file = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
 
-        fq = QuestionFile.new
-        fq.send_file question_file
+        fq = UserFile.new
+        fq.send_file user_file
 
         fq.should be_valid
         fq.name.should eq 'test.rb'

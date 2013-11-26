@@ -4,7 +4,7 @@ FactoryGirl.define do
   s = Dir::pwd.to_s + ("/spec/factories/test.rb")
   f = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
 
-  factory :question_file do
+  factory :user_file do
     self.name f.original_filename    #test.rb
     self.content_type f.content_type #text/x-ruby-script
     self.data f.read                 #test = "test"\n

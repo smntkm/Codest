@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :question do
     title "MyString"
     content "MyString"
-    file { FactoryGirl.create(:question_file) }
+    file { FactoryGirl.create(:user_file) }
   end
 end

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "QuestionFiles" do
-  describe "GET /question_files" do
+describe "UserFiles" do
+  describe "GET /user_files" do
     it "works! (now write some real specs)" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get question_files_path
+      get user_files_path
       response.status.should be(200)
     end
   end
