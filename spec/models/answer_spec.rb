@@ -15,7 +15,6 @@ describe Answer do
     specify "question_idがあるとき、qeustionとの参照が保存される" do
       question = FactoryGirl.create(:question)
       ans = FactoryGirl.build(:answer)
-      
       ans.question_id = question.id
 
       expect(ans.question).to be_true
