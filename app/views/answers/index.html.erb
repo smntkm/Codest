@@ -10,6 +10,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -20,6 +21,7 @@
         <td><%= answer.question_id %></td>
         <td><%= answer.email %></td>
         <td><%= answer.user_file %></td>
+        <td><%= link_to 'report', report_path(answer), method: :post %></td>
         <td><%= link_to 'Show', answer %></td>
         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
