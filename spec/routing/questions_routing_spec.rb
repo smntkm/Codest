@@ -32,7 +32,7 @@ describe QuestionsController do
     end
 
     it "root" do
-      get("/").should route_to("questions#index")
+      get("/").should route_to("top#top")
     end
   end
 end
