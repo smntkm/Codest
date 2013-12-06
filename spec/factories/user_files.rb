@@ -1,12 +1,23 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  s = Dir::pwd.to_s + ("/spec/factories/sample.rb")
-  f = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
-
   factory :user_file do
-    self.name f.original_filename    #sample.rb
-    self.content_type f.content_type #text/x-ruby-script
-    self.data f.read                 #内容
+    question_path = Dir::pwd.to_s + ("/spec/factories/sample_test.rb")
+    question_file = Rack::Test::UploadedFile.new(question_path, "text/x-ruby-script")
+    
+    factory :question_file do
+      self.name question_file.original_filename    #ファイル名 sample_test.rb
+      self.content_type question_file.content_type #コンテントタイプ text/x-ruby-script
+      self.data question_file.read                 #内容
+    end
+
+    answer_path = Dir::pwd.to_s + ("/spec/factories/sample.rb")
+    answer_file = Rack::Test::UploadedFile.new(answer_path, "text/x-ruby-script")
+
+    factory :answer_file do
+      self.name answer_file.original_filename    #ファイル名 sample.rb
+      self.content_type answer_file.content_type #コンテントタイプ text/x-ruby-script
+      self.data answer_file.read                 #内容
+    end
   end
 end

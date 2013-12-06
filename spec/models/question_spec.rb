@@ -51,7 +51,7 @@ describe Question do
   describe "Relation" do
     context "#user_file" do
       it "問題から問題ファイルが参照出来る" do
-        qf = FactoryGirl.create(:user_file)
+        qf = FactoryGirl.create(:question_file)
         q = FactoryGirl.build(:question)
 
         q.user_file = qf

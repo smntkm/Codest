@@ -2,21 +2,15 @@ require 'spec_helper'
 
 describe AnswersController do
   before do
-    s = Dir::pwd.to_s + ("/spec/factories/test.rb")
+    s = Dir::pwd.to_s + ("/spec/factories/sample.rb")
     @f = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
     @q =  FactoryGirl.create(:question)
   end
   
   let(:user_file_valid_attributes) { { data: @f } }
-  # This should return the minimal set of attributes required to create a valid
-  # Answer. As you add validations to Answer, be sure to
-  # adjust the attributes here as well.
-
+  
   let(:valid_attributes) { { "user_name" => "MyString", "question_id" => @q.id, "email" => "hoge@example.com", "user_file_attributes" => user_file_valid_attributes }}
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # AnswersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET index" do

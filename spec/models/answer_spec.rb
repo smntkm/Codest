@@ -25,7 +25,7 @@ describe Answer do
     context "#file" do
       specify "user_fileを参照出来る" do
         ans = Answer.new
-        qf = FactoryGirl.create(:user_file)
+        qf = FactoryGirl.create(:answer_file)
         ans.user_file = qf
 
         expect(ans.user_file).to be_true
