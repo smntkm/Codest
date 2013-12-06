@@ -7,6 +7,16 @@ div#container {
 
 div#header {
   border-bottom: 5px solid #000;
+
+  div#menu {
+    height: 100%;
+    background: #000000;
+
+    //テキスト系
+    padding: 7.5px;
+    font-size: 150%;
+    color: #ffffff;
+  }
 }
 
 div#conent {
