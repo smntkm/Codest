@@ -1,4 +1,23 @@
 $container_width: 750px;
+body {
+  padding-top: 60px;
+}
+
+.navbar-inner {
+  background: #ffffff;
+}
+
+#rogo {
+  padding: 0;
+  margin-left: 0px;
+}
+
+.menu {
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+
 
 div#container {
   width: 750px;
@@ -6,8 +25,7 @@ div#container {
 }
 
 div#header {
-  border-bottom: 5px solid #000;
-
+  
   div#menu {
     height: 100%;
     background: #000000;

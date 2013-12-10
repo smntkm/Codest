@@ -1,5 +1,20 @@
-<%= link_to image_tag('codest_rogo.png', size: '230x80'), root_path %>
-<div id="menu">
-  Codestとは？ | 問題一覧 | 解答送信 | 出題者に送信 
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to image_tag('codest_rogo.png', size: '230x40'), root_path, class: "brand", id: "rogo" %>
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="i-bar"></span>
+        <span class="i-bar"></span>
+        <span class="i-bar"></span>
+      </a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Questions", "/path1", class: "menu" %></li>
+          <li><%= link_to "Answer", "/path2", class: "menu" %></li>
+          <li><%= link_to "Link3", "/path3", class: "menu" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
