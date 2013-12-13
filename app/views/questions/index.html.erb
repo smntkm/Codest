@@ -1,39 +1,13 @@
 <h1>Listing questions</h1>
-
-<% 30.times { %>
+<div class="question_new">
+  <%= link_to 'New Question', new_question_path %>
+<div>
 <% @questions.each do |question| %>
   <div class="thumbnail span3">
     <div class="caption">
-      <h3><%= question.title+"まままままままままままままままままままままままままままままままままm" %></h3>
-      <p><%= truncate question.content + "ままままあままままままままままままままままあまあまあまあまあままままっm", omission: "..." %></p>
+      <h3><%= question.title %></h3>
+      <p><%= truncate question.content, omission: "..." %></p>
       <p><%= link_to "Learn more", question_path(question.id), class: "btn btn-primary btn-lg" %></p>
     </div>
   </div>
 <% end %>
-<% } %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Question_file</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= link_to "#{question.title}", question %></td>
-        <td><%= question.user_file %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Question', new_question_path %>
