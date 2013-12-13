@@ -1,3 +1,4 @@
+<div class="thumbnail">
 <%= form_for(@question, html: { multitype: true }) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
@@ -12,20 +13,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :content %><br>
+    <%= f.label :content %>
     <%= f.text_area :content %>
   </div>
   <div class="field">
     <%= f.fields_for :user_file_attributes do |uf| %>
-        <%= uf.label :data %><br>
-        <%= uf.file_field :data %>
-		<% end %>
+      <%= uf.label :data %>
+      <%= uf.file_field :data %>
+    <% end %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
