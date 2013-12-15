@@ -1,4 +1,5 @@
-<%= form_for(@answer) do |f| %>
+<div class="thumbnail">
+<%= form_for(@answer, html: { multitype: true }) do |f| %>
   <% if @answer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
@@ -12,25 +13,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_name %><br>
+    <%= f.label :user_name %>
     <%= f.text_field :user_name %>
   </div>
   <div class="field">
-    <%= f.label :question_id %><br>
-
+    <%= f.label :question_id %>
     <%= f.select :question_id, Question.all.map{|q| [q.title, q.id] } %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
     <%= f.fields_for :user_file_attributes do |uf| %>
-      <%= uf.label :data %><br>
+      <%= uf.label :data %>
       <%= uf.file_field :data %>
     <% end %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  "Send Report", class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
