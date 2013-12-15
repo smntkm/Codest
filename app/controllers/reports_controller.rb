@@ -10,13 +10,13 @@ class ReportsController < ApplicationController
     question = Question.find(answer.question_id)
     
     #一意性を上げるためのタイムスタンプ
-    t = Time.now.strftime("%Y%m%d%H%M%S%L")
+    time = Time.now.strftime("%Y%m%d%H%M%S%L")
     #一意のテンプファイルの作成
-    exe_file = Tempfile.new(["#{t}", ".rb"], "./tmp")
+    exe_file = Tempfile.new(["#{time}", ".rb"], "./tmp")
 
     #それぞれのファイルの書き込み
-    exe_file.write(answer.user_file.data)
-    exe_file.write(question.user_file.data)
+    File.open(exe_file, "ab") {|f| f.write(answer.user_file.data) }
+    File.open(exe_file, "ab") {|f| f.write(question.user_file.data)  }
     
     #ファイルポインタを先頭にする
     exe_file.rewind
