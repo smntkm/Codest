@@ -1,37 +1,30 @@
 <div class="thumbnail">
-<%= form_for(@answer, html: { multitype: true }) do |f| %>
-  <% if @answer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+  <%= form_for(@answer, html: { multitype: true }) do |f| %>
+    <% if @answer.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+        <ul>
+          <% @answer.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-      <% @answer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+    <div class="field">
+      <%= f.label :question_id %>
+      <%= f.select :question_id, Question.all.map{|q| [q.title, q.id] } %>
+    </div>
+
+    <div class="field">
+      <%= f.fields_for :user_file_attributes do |uf| %>
+        <%= uf.label :data %>
+        <%= uf.file_field :data %>
       <% end %>
-      </ul>
+    </div>
+
+    <div class="actions">
+      <%= f.submit  "Send Report", class: "btn btn-primary" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :user_name %>
-    <%= f.text_field :user_name %>
-  </div>
-  <div class="field">
-    <%= f.label :question_id %>
-    <%= f.select :question_id, Question.all.map{|q| [q.title, q.id] } %>
-  </div>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.fields_for :user_file_attributes do |uf| %>
-      <%= uf.label :data %>
-      <%= uf.file_field :data %>
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit  "Send Report", class: "btn btn-primary" %>
-  </div>
-<% end %>
 </div>
