@@ -8,7 +8,7 @@ Codest::Application.routes.draw do
   resources :questions
 
   # レポート作成
-  match "/reports/:id" => "reports#create", via: :post, as: "report"
+  match "/reports/:id" => "reports#create", via: :get, as: "report"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
