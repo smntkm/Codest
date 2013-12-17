@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Codest</title>
+
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag "application", :media => "all" %>
+
   </head>
   <body>
     <div id="header">
