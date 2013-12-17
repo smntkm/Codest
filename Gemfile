@@ -48,11 +48,15 @@ end
 gem 'spring'
 
 group :development, :test do
-	gem 'rspec-rails'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'webrat'
 	gem 'capybara'
   gem 'capybara-webkit', '1.0.0'
+  gem 'rspec-rails'
+end
+
+group :test do
   gem 'factory_girl_rails'
+  gem 'shoulda'
 end
