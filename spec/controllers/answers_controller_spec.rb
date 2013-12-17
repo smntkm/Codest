@@ -74,7 +74,7 @@ describe AnswersController do
 
       it "redirects to the created answer" do
         post :create, {:answer => valid_attributes}, valid_session
-        response.should redirect_to(Answer.last)
+        response.should redirect_to(report_path Answer.last)
       end
     end
 
