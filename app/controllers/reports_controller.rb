@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   def create
     file_create
+    answer_delete
     render "report"
   end
 
@@ -26,5 +27,9 @@ class ReportsController < ApplicationController
 
   def test_exe exe_file
     @result = Open3.capture3("ruby #{File.path(exe_file)}")
+  end
+
+  def answer_delete
+    Answer.destroy(params[:id])
   end
 end

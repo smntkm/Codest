@@ -33,13 +33,25 @@ describe ReportsController do
       a.email = "hoge@sample.com"
       a.save
 
-      post :create, { id: a }
+      get :create, { id: a }
       result = assigns(:result)
 
       expect(result.size).to eq 3
       expect(result[0]).to be_true
       expect(result[1]).to eq ""
     end
-  end
 
+    specify "解答がDBから削除されている" do
+      question_file = FactoryGirl.create(:question_file)
+      question = FactoryGirl.create(:question, user_file: question_file)
+      question.save
+      answer_file = FactoryGirl.create(:answer_file)
+      answer = FactoryGirl.create(:answer, user_file: answer_file)
+      answer.question = question
+      answer.save
+      expect {
+        get :create, { id: answer }
+      }.to change(Answer, :count).by -1
+    end
+  end
 end
