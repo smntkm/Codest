@@ -1,0 +1,13 @@
+<h1>Listing questions</h1>
+<div class="question_new">
+  <%= link_to 'New Question', new_question_path %>
+<div>
+<% @questions.each do |question| %>
+  <div class="thumbnail span3">
+    <div class="caption">
+      <h3><%= question.title %></h3>
+      <p><%= truncate question.content, omission: "..." %></p>
+      <p><%= link_to "Learn more", question_path(question.id), class: "btn btn-primary btn-lg" %></p>
+    </div>
+  </div>
+<% end %>
