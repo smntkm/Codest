@@ -27,6 +27,17 @@ class ReportsController < ApplicationController
 
   def test_exe exe_file
     @result = Open3.capture3("ruby #{File.path(exe_file)}")
+    result_format
+  end
+
+  def result_format
+    @result[0].gsub!(/Failure/, "失敗")
+    @result[0].gsub!(/expected but was/, "期待値")
+    @result[0].gsub!(/tests/, "テスト")
+    @result[0].gsub!(/assertions/, "アサーション")
+    @result[0].gsub!(/failures/, "失敗")
+    @result[0].gsub!(/errors/, "エラー")
+    @result[0].gsub!(/skips/, "スキップ")
   end
 
   def answer_delete
