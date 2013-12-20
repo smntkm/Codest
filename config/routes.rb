@@ -12,13 +12,14 @@ Codest::Application.routes.draw do
 
   namespace :setting do
     resources :questions
+    get "top" => "top#index", as: "top" 
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'top#top'
+  root 'top#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

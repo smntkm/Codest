@@ -30,9 +30,5 @@ describe QuestionsController do
     it "routes to #destroy" do
       delete("/questions/1").should route_to("questions#destroy", :id => "1")
     end
-
-    it "root" do
-      get("/").should route_to("top#top")
-    end
   end
 end
