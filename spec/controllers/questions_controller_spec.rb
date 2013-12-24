@@ -8,7 +8,7 @@ describe QuestionsController do
   end
   let(:user_file_valid_attributes) { { data: @f }}
 
-  let(:valid_attributes) { { "title" => "MyTitile", "content" => "MyContent" , "user_file_attributes" => user_file_valid_attributes} }
+  let(:valid_attributes) { { "title" => "MyTitile", "password" => "password", "email" => "hoge@hoge.com", "content" => "MyContent" , "user_file_attributes" => user_file_valid_attributes} }
 
   let(:valid_session) { {} }
 
