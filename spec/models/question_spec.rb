@@ -1,6 +1,5 @@
 require 'spec_helper'
-#require 'factories/questions'
-#
+
 describe "FactoryGirl" do
   specify "FactoryGirlが使える" do
     q = FactoryGirl.create(:question)
@@ -45,6 +44,16 @@ describe Question do
         @q.content = nil
         @q.should have(1).errors_on(:content)
       end
+
+      specify ":passwordに何も入れないと登録出来ない" do
+        @q.hash_password = nil
+       expect(@q).to have(1).errors_on(:hash_password)
+      end
+      
+      specify ":emailに何も入れないと登録出来ない" do
+        @q.email = nil
+        expect(@q).to have(1).errors_on(:email)
+      end
     end
   end
 
@@ -76,11 +85,32 @@ describe Question do
   end
 
   describe "password =" do
-    specify "パスワードがハッシュにして保存されている" do
+    specify "#passwordにパスワード(password)を入れるとハッシュにして保存されている" do
       question = Question.new
-      p question.password
       question.password = "password"
-      expect(question.password).not_to eq "password"
+
+      expect(question.hash_password).to eq "password"
+    end
+
+    specify "#passwordにpassword入れてpaswordと比較するとfalseになる" do
+      question = Question.new
+      question.password = "password"
+
+      expect(question.hash_password).not_to eq "pasword"
+    end
+
+    specify "#passwordにnilを入れるとnil" do
+      question = Question.new
+      question.password = nil
+
+      expect(question.hash_password).to eq nil
+    end
+
+    specify "#passwordに空文字を入れるとnil" do
+      question = Question.new
+      question.password = ""
+
+      expect(question.hash_password).to eq nil
     end
   end
 end

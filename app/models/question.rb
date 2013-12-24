@@ -1,5 +1,9 @@
+require "bcrypt" 
+
 class Question < ActiveRecord::Base
-  validates :title, :content , presence: true
+  attr_accessor :password
+
+  validates :title, :content, :hash_password, :email, presence: true
  
   belongs_to :user_file
   has_many :answers
@@ -13,9 +17,6 @@ class Question < ActiveRecord::Base
   end
 
   def password=(pass)
-    
-    p Password.create(pass)
-    self.password = pass
-    #self.password = Password.create(pass)
+    self.hash_password = BCrypt::Password.create(pass)
   end
 end
