@@ -1,28 +1,26 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このアプリは、Codestと言い、卒業制作として作ったアプリケーションです。
+
 
 Things you may want to cover:
 
-* Ruby version
+=== バージョン
+* Ruby 2.0.0
+* Rails 4.0.0
+* PostgrSQL 9.2.4
 
-* System dependencies
+=== gemのインストール
+* 依存gemのインストール <tt>bundle install</tt>.
 
-* Configuration
+=== データベースの設定
+* データベースの作成 <tt>rake db:create</tt>.
+* スキーマの設定 <tt>rake db:migrate</tt>.
+* テストデータベースの初期化 <tt>rake db:testprepare</tt>.
 
-* Database creation
+=== アプリの起動
+* アプリの起動 <tt>rails s</tt>.
 
-* Database initialization
+=== テストの実行
+* テスト実行 <tt>rake spec</tt>.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
