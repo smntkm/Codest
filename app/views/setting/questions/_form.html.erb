@@ -21,6 +21,14 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
     <%= f.fields_for :user_file_attributes do |uf| %>
       <%= uf.label :data %>
       <%= uf.file_field :data %>
