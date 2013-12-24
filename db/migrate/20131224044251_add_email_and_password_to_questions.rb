@@ -1,7 +1,7 @@
 class AddEmailAndPasswordToQuestions < ActiveRecord::Migration
   def up
-    add_column :questions, :email, :String
-    add_column :questions, :password, :String 
+    add_column :questions, :email, :string
+    add_column :questions, :password, :string 
   end
 
   def down
