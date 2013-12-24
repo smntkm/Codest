@@ -5,5 +5,7 @@ FactoryGirl.define do
     title "MyString"
     content "MyString"
     user_file { FactoryGirl.create(:question_file) }
+    password "password"
+    email "hoge@hoge.com"
   end
 end
