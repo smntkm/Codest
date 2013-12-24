@@ -74,4 +74,13 @@ describe Question do
       end
     end
   end
+
+  describe "password =" do
+    specify "パスワードがハッシュにして保存されている" do
+      question = Question.new
+      p question.password
+      question.password = "password"
+      expect(question.password).not_to eq "password"
+    end
+  end
 end

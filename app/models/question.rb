@@ -11,4 +11,11 @@ class Question < ActiveRecord::Base
     self.build_user_file
     self.user_file.send_file q_data
   end
+
+  def password=(pass)
+    
+    p Password.create(pass)
+    self.password = pass
+    #self.password = Password.create(pass)
+  end
 end

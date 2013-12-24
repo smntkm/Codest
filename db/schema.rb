@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 20131224044251) do
   end
 
   create_table "questions", force: true do |t|
-    t.string   "title",        null: false
-    t.text     "content",      null: false
+    t.string   "title",         null: false
+    t.text     "content",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_file_id"
     t.string   "email"
-    t.string   "password"
+    t.string   "hash_password"
   end
 
   create_table "user_files", force: true do |t|
