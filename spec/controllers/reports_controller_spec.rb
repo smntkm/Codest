@@ -19,6 +19,8 @@ describe ReportsController do
       q.user_file = question_file
       q.title = "問題1"
       q.content = "2つの文字列を連結し、返すテストの作成"
+      q.email = "hoge@hoge.com"
+      q.password = "password"
       q.save
     
       #解答の作成
