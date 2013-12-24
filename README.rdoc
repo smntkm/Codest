@@ -2,9 +2,6 @@
 
 このアプリは、Codestと言い、卒業制作として作ったアプリケーションです。
 
-
-Things you may want to cover:
-
 === バージョン
 * Ruby 2.0.0
 * Rails 4.0.0
