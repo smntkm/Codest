@@ -17,7 +17,7 @@
       <tr>
         <td><%= question.title %></td>
         <td><%= truncate question.content, omission: "..." %></td>
-        <td><%= link_to "show", question_path(question.id), class: "btn btn-primary" %></td>
+        <td><%= link_to "show", setting_question_path(question.id), class: "btn btn-primary" %></td>
       <% end %>
     </tr>
   </tbody>
