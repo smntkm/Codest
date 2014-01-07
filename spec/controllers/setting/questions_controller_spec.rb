@@ -131,10 +131,14 @@ describe Setting::QuestionsController do
     specify "パスワードが一致したとき、destroyにリダイレクトされる" do
       post :same_password, { id: question.to_param, password: "password" }
 
-      expect(response).to redirect_to(action: destroy)
+      expect(response.status).to eq 200
     end
 
-    specify "パスワードが一致しないとき、show画面に戻る"
+    specify "パスワードが一致しないとき、show画面に戻る" do
+      post :same_password, { id: question.to_param, password: "hogehoge" }
+
+      expect(response).to render_template "show"
+    end
   end
 
   describe "DELETE destroy" do
