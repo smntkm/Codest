@@ -1,5 +1,5 @@
 class Setting::QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :same_password]
 
   # GET /questions
   # GET /questions.json
@@ -52,12 +52,23 @@ class Setting::QuestionsController < ApplicationController
     end
   end
 
+  # POST /questions/1/same_password
+  def same_password
+    respond_to do |format|
+      if @question.hash_password == params[:password]
+        format.html { redirect_to action: "destroy", id: @question.id  }
+      else
+        format.html { render "show", location: @question }
+      end
+    end
+  end
+
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to _setting_questions_url }
+      format.html { redirect_to setting_questions_url }
       format.json { head :no_content }
     end
   end
