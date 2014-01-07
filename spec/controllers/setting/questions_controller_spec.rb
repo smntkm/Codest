@@ -125,6 +125,18 @@ describe QuestionsController do
     end
   end
 
+  describe "POST same_password" do
+    let(:question) { FactoryGirl.create(:question, password: "password") }
+
+    specify "パスワードが一致したとき、destroyにリダイレクトされる" do
+      post :same_password, { id: question.to_param, password: "password" }
+
+      expect(response).to redirect_to(action: destroy)
+    end
+
+    specify "パスワードが一致しないとき、show画面に戻る"
+  end
+
   describe "DELETE destroy" do
     it "destroys the requested question" do
       question = Question.create! valid_attributes
