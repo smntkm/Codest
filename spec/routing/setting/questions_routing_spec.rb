@@ -30,5 +30,9 @@ describe Setting::QuestionsController do
     it "routes to #destroy" do
       delete("/setting/questions/1").should route_to("setting/questions#destroy", :id => "1")
     end
+
+    specify "routes to #same_password" do
+      post("questions/1/same_password").should route_to("questions#same_password", id: "1")
+    end
   end
 end
