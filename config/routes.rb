@@ -5,7 +5,9 @@ Codest::Application.routes.draw do
     member { get 'download' }
   end
 
-  resources :questions
+  resources :questions do
+    member { post 'same_password' }
+  end
 
   # レポート作成
   match "/reports/:id" => "reports#create", via: :get, as: "report"
