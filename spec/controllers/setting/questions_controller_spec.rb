@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe QuestionsController do
+describe Setting::QuestionsController do
   before(:each) do
     s = Dir::pwd.to_s + ("/spec/factories/sample_test.rb")
     @f = Rack::Test::UploadedFile.new(s, "text/x-ruby-script")
@@ -64,7 +64,7 @@ describe QuestionsController do
 
       it "redirects to the created question" do
         post :create, {:question => valid_attributes}, valid_session
-        response.should redirect_to(Question.last)
+        response.should redirect_to([:setting, Question.last])
       end
     end
 
@@ -148,7 +148,7 @@ describe QuestionsController do
     it "redirects to the questions list" do
       question = Question.create! valid_attributes
       delete :destroy, {:id => question.to_param}, valid_session
-      response.should redirect_to(questions_url)
+      response.should redirect_to(setting_questions_url)
     end
   end
 end
