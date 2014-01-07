@@ -5,15 +5,15 @@ Codest::Application.routes.draw do
     member { get 'download' }
   end
 
-  resources :questions do
-    member { post 'same_password' }
-  end
+  resources :questions
 
   # レポート作成
   match "/reports/:id" => "reports#create", via: :get, as: "report"
 
   namespace :setting do
-    resources :questions
+    resources :questions do
+      member { post 'same_password' }
+    end
     get "top" => "top#index", as: "top" 
   end
 
