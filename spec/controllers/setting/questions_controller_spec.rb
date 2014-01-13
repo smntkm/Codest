@@ -128,14 +128,22 @@ describe Setting::QuestionsController do
   describe "POST same_password" do
     let(:question) { FactoryGirl.create(:question, password: "password") }
 
-    specify "パスワードが一致したとき、destroyにリダイレクトされる" do
+    specify "パスワードが一致したとき、settingの一覧画面にリダイレクトされる" do
       post :same_password, { id: question.to_param, password: "password" }
 
-      expect(response.status).to eq 200
+      expect(response).to redirect_to setting_questions_path
     end
 
+    specify "パスワードが一致したとき、問題が削除出来る" do
+      expect {
+        question #letの遅延評価でcreateが実行されないため、questionを使い登録をしておく
+        post :same_password, { id: question.to_param, password: "password" }
+      }.to change(Question, :count).by(0)
+    end
+
+
     specify "パスワードが一致しないとき、show画面に戻る" do
-      post :same_password, { id: question.to_param, password: "hogehoge" }
+      post :same_password, { id: question.to_param, password: "hogehoge", mathod: :delete }
 
       expect(response).to render_template "show"
     end
