@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class Setting::QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy, :same_password]
 
@@ -55,8 +57,9 @@ class Setting::QuestionsController < ApplicationController
   # POST /questions/1/same_password
   def same_password
     respond_to do |format|
-      if @question.hash_password == params[:password]
-        format.html { redirect_to action: "destroy", id: @question.id  }
+      if @question.same_password? params[:password]
+        @question.destroy
+        format.html { redirect_to setting_questions_url }
       else
         format.html { render "show", location: @question }
       end
