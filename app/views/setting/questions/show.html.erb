@@ -9,7 +9,20 @@
     <div class="question_content">
       <p><%= simple_format @question.content %><p>
     </div>
-    <p><%= link_to 'Download', download_user_file_path(@question.user_file), class: "btn btn-primary btn-lg", role: "button" %></p>
+    <div>
+      <p><%= link_to 'Download', download_user_file_path(@question.user_file), class: "btn btn-primary btn-lg", role: "button" %></p>
+    </div>
+    <div>
+      <%= form_tag same_password_setting_question_path @question, method: :post do %>
+        <div class="field">
+          <%= label_tag "Delete password" %>
+          <%= password_field_tag :password %>
+        </div>
+        <div class="actions">
+          <%= submit_tag "delete", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
