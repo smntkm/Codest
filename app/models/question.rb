@@ -19,4 +19,8 @@ class Question < ActiveRecord::Base
   def password=(pass)
     self.hash_password = BCrypt::Password.create(pass)
   end
+
+  def same_password? password
+    BCrypt::Password.new(self.hash_password) == password
+  end
 end
