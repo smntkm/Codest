@@ -113,4 +113,26 @@ describe Question do
       expect(question.hash_password).to eq nil
     end
   end
+
+  describe "#same_password?" do
+    specify "ハッシュパスワードと'same password'を比較するとtrueが返る" do
+      FactoryGirl.create(:question, password: "same password")
+      question = Question.all.first
+      password = "same password"
+
+      actual = question.same_password? password
+
+      expect(actual).to be_true
+    end
+    
+    specify "ハッシュパスワードと'different password'を比較するとfalseが返る" do
+      FactoryGirl.create(:question, password: "same password")
+      question = Question.all.first
+      password = "different password"
+
+      actual = question.same_password? password
+
+      expect(actual).to be_false
+    end
+  end
 end
