@@ -27,5 +27,5 @@
 * テスト実行 <tt>rake spec</tt>.
 
 === ドキュメント
-* ドキュメントの参照 Codest/doc/app/index.html を参照
+* ドキュメントの作成 <tt>rake doc:app</tt>
 
