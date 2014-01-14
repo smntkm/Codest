@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class UserFile - Rails Application Documentation</title>
+<title>class AnswerMail - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/models/user_file.rb
+    <li>app/mailers/answer_mail.rb
   </ul>
 </nav>
 
@@ -59,7 +59,7 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link">ActiveRecord::Base
+  <p class="link">ActionMailer::Base
   
 </nav>
 
@@ -70,7 +70,7 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-send_file">#send_file</a>
+    <li><a href="#method-i-send_mail">#send_mail</a>
     
   </ul>
 </nav>
@@ -136,7 +136,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class UserFile</h1>
+  <h1 class="class">class AnswerMail</h1>
 
   <div id="description" class="description">
     
@@ -160,36 +160,44 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-send_file" class="method-detail ">
+      <div id="method-i-send_mail" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">send_file</span><span
-            class="method-args">(file)</span>
+          <span class="method-name">send_mail</span><span
+            class="method-args">(answer)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          
+          <p>Subject can be set in your I18n file at config/locales/en.yml with the
+following lookup:</p>
+
+<pre>en.answer_mail.send.subject</pre>
           
 
           
-          <div class="method-source-code" id="send_file-source">
-            <pre><span class="ruby-comment"># File app/models/user_file.rb, line 7</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">send_file</span> <span class="ruby-identifier">file</span>
- <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">original_filename</span>
- <span class="ruby-keyword">self</span>.<span class="ruby-identifier">content_type</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">content_type</span>
- <span class="ruby-keyword">self</span>.<span class="ruby-identifier">data</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>
+          <div class="method-source-code" id="send_mail-source">
+            <pre><span class="ruby-comment"># File app/mailers/answer_mail.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">send_mail</span>(<span class="ruby-identifier">answer</span>)
+  <span class="ruby-identifier">exe_file</span> = <span class="ruby-constant">Tempfile</span>.<span class="ruby-identifier">new</span>([<span class="ruby-node">&quot;#{File.basename(answer.user_file.name, &#39;.rb&#39;)}&quot;</span>, <span class="ruby-string">&quot;.rb&quot;</span>])
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">exe_file</span>, <span class="ruby-string">&quot;ab&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">answer</span>.<span class="ruby-identifier">user_file</span>.<span class="ruby-identifier">data</span>) }
+
+  <span class="ruby-identifier">attachments</span>[<span class="ruby-node">&quot;#{answer.user_file.name}&quot;</span>] = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">exe_file</span>)
+
+  <span class="ruby-ivar">@greeting</span> = <span class="ruby-node">&quot;#{answer.user_name}様から、#{answer.question.title}の解答が届きました。&quot;</span>
+  
+  <span class="ruby-identifier">mail</span> <span class="ruby-identifier">to</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;b0171@oic.jp&quot;</span>, <span class="ruby-identifier">subject</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Codestから解答の送信です。&quot;</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- send_file-source -->
+          </div><!-- send_mail-source -->
           
         </div>
 
         
 
         
-      </div><!-- send_file-method -->
+      </div><!-- send_mail-method -->
 
     
     </section><!-- public-instance-method-details -->
