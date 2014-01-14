@@ -84,10 +84,10 @@ Codest::Application.configure do
   config.action_mailer.smtp_settings = {
     address:        "smtp.gmail.com",
     port:           587,
-    domail:         "domain.of.sender.net",
+    domail:         "gmail.com",
     authentication: "plain",
-    user_name:      "sample",
-    password:       "password",
+    user_name:      "codest.master@gmail.com",
+    password:       "hogehoge",
     enable_starttls_auto: true
   }
 end

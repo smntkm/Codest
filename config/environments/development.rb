@@ -28,15 +28,14 @@ Codest::Application.configure do
   config.assets.debug = true
 
   # mailer
-  config.action_mailer.delivery_mathod = :smtp
-
-  config.action_mailer.smtp_settings = {
-    address:        "smtp.gmail.com",
-    port:           587,
-    domail:         "domain.of.sender.net",
-    authentication: "plain",
-    user_name:      "sample",
-    password:       "password",
-    enable_starttls_auto: true
-  }
+  config.action_mailer.delivery_method = :smtp
+	config.action_mailer.smtp_settings = {
+		address:        "smtp.gmail.com",
+		port:					  587,
+		domain:				  "gmail.com",
+		authentication: "plain",
+		user_name:			"codest.master@gmail.com",
+		password:				"codest_password",
+		enable_starttls_auto: true
+	}
 end
