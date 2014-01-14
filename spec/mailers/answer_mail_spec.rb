@@ -2,16 +2,19 @@ require "spec_helper"
 
 describe AnswerMail do
   describe "send" do
-    let(:mail) { AnswerMail.send }
+    let(:question) { FactoryGirl.create(:question, email: "question@example.com") }
+    let(:answer) { FactoryGirl.create(:answer, question: question, email: "answer@example.com") }
+    let(:mail) { AnswerMail.send_mail answer }
+
 
     it "renders the headers" do
-      mail.subject.should eq("Send")
-      mail.to.should eq(["to@example.org"])
-      mail.from.should eq(["from@example.com"])
+      mail.subject.should eq("Codestから解答の送信です。")
+      mail.to.should eq(["#{question.email}"])
+      mail.from.should eq(["codest.master@gmail.com"])
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("Hi")
+      mail.body.encoded.should match("#{answer.user_name}様から、#{answer.question.title}の解答が届きました")
     end
   end
 
