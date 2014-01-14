@@ -26,4 +26,17 @@ Codest::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # mailer
+  config.action_mailer.delivery_mathod = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:        "smtp.gmail.com",
+    port:           587,
+    domail:         "domain.of.sender.net",
+    authentication: "plain",
+    user_name:      "sample",
+    password:       "password",
+    enable_starttls_auto: true
+  }
 end

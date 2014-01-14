@@ -77,4 +77,17 @@ Codest::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  #mailer
+  config.action_mailer.delivery_mathod = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:        "smtp.gmail.com",
+    port:           587,
+    domail:         "domain.of.sender.net",
+    authentication: "plain",
+    user_name:      "sample",
+    password:       "password",
+    enable_starttls_auto: true
+  }
 end
