@@ -26,3 +26,6 @@
 === テストの実行
 * テスト実行 <tt>rake spec</tt>.
 
+=== ドキュメント
+* ドキュメントの参照 Codest/doc/app/index.html を参照
+
