@@ -7,6 +7,9 @@
 これを使う事で、コードを読む力と書く力が付き、
 他の学習システムとは違い、問題とそれに付属するテストコードが付いてます。
 
+== Gitからのクローン方法
+* <tt>git clone https://github.com/smntkm/Codest.git</tt>
+
 === バージョン
 * Ruby 2.0.0
 * Rails 4.0.0
@@ -26,6 +29,7 @@
 === テストの実行
 * テスト実行 <tt>rake spec</tt>.
 
-=== ドキュメント
-* ドキュメントの作成 <tt>rake doc:app</tt>
+=== APIドキュメント
+* APIドキュメントの作成 <tt>rake doc:app</tt>
+* APIドキュメントの観覧は、Codest/doc/app/index.html
 
