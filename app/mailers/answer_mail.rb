@@ -14,6 +14,6 @@ class AnswerMail < ActionMailer::Base
 
     @greeting = "#{answer.user_name}様から、#{answer.question.title}の解答が届きました。"
     
-    mail to: "b0171@oic.jp", subject: "Codestから解答の送信です。"
+    mail to: "#{answer.question.email}", subject: "Codestから解答の送信です。"
   end
 end
