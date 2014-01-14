@@ -12,10 +12,5 @@ describe AnswerMail do
       mail.to.should eq(["#{question.email}"])
       mail.from.should eq(["codest.master@gmail.com"])
     end
-
-    it "renders the body" do
-      mail.body.encoded.should match("#{answer.user_name}様から、#{answer.question.title}の解答が届きました")
-    end
   end
-
 end
