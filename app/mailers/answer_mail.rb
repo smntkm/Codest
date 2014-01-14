@@ -1,14 +1,19 @@
 class AnswerMail < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "codest.master@gmail.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.answer_mail.send.subject
   #
-  def send
-    @greeting = "Hi"
+  def send_mail(answer)
+    exe_file = Tempfile.new(["#{File.basename(answer.user_file.name, '.rb')}", ".rb"])
+    File.open(exe_file, "ab") {|f| f.write(answer.user_file.data) }
 
-    mail to: "to@example.org"
+    attachments["#{answer.user_file.name}"] = File.read(exe_file)
+
+    @greeting = "#{answer.user_name}様から、#{answer.question.title}の解答が届きました。"
+    
+    mail to: "b0171@oic.jp", subject: "Codestから解答の送信です。"
   end
 end
