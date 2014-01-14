@@ -35,7 +35,7 @@ Codest::Application.configure do
 		domain:				  "gmail.com",
 		authentication: "plain",
 		user_name:			"codest.master@gmail.com",
-		password:				"codest_password",
+		password:				"hogehoge",
 		enable_starttls_auto: true
 	}
 end
