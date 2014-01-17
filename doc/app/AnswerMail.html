@@ -186,9 +186,12 @@ following lookup:</p>
 
   <span class="ruby-identifier">attachments</span>[<span class="ruby-node">&quot;#{answer.user_file.name}&quot;</span>] = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">exe_file</span>)
 
-  <span class="ruby-ivar">@greeting</span> = <span class="ruby-node">&quot;#{answer.user_name}様から、#{answer.question.title}の解答が届きました。&quot;</span>
+  <span class="ruby-ivar">@greeting</span> = <span class="ruby-node">&quot;#{answer.user_name}様から、#{answer.question.title}の解答が届きました。\n
+               \n
+               #{answer.email}宛に、Feedbackを返して返してあげましょう！
+              &quot;</span>
   
-  <span class="ruby-identifier">mail</span> <span class="ruby-identifier">to</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;b0171@oic.jp&quot;</span>, <span class="ruby-identifier">subject</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Codestから解答の送信です。&quot;</span>
+  <span class="ruby-identifier">mail</span> <span class="ruby-identifier">to</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#{answer.question.email}&quot;</span>, <span class="ruby-identifier">subject</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Codestから解答の送信です。&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- send_mail-source -->
           
