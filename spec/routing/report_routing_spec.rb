@@ -2,8 +2,12 @@ require "spec_helper"
 
 describe ReportsController do
   describe "routing" do
+    specify "routes to #new" do
+      expect(get("/reports/new")).to route_to("reports#new")
+    end
+
     it "routes to #create" do
-      get("/reports/1").should route_to("reports#create", id: "1")
+      post("/reports").should route_to("reports#create")
     end
   end
 end

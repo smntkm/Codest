@@ -8,7 +8,7 @@ Codest::Application.routes.draw do
   resources :questions
 
   # レポート作成
-  match "/reports/:id" => "reports#create", via: :get, as: "report"
+  resources :reports, except: [:index, :show, :edit, :update, :destroy]
 
   namespace :setting do
     resources :questions do
