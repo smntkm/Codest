@@ -29,6 +29,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
+        AnswerMail.send_mail(@answer).deliver
         format.html { render "feedback" }
         format.json { render action: 'show', status: :created, location: @answer }
       else
