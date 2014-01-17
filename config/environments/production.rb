@@ -20,7 +20,7 @@ Codest::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -63,7 +63,7 @@ Codest::Application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
@@ -79,7 +79,7 @@ Codest::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   #mailer
-  config.action_mailer.delivery_mathod = :smtp
+  config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
     address:        "smtp.gmail.com",
@@ -87,7 +87,7 @@ Codest::Application.configure do
     domail:         "gmail.com",
     authentication: "plain",
     user_name:      "codest.master@gmail.com",
-    password:       "hogehoge",
+    password:       "codest_password",
     enable_starttls_auto: true
   }
 end
