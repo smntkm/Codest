@@ -6,7 +6,6 @@ describe AnswerMail do
     let(:answer) { FactoryGirl.create(:answer, question: question, email: "answer@example.com") }
     let(:mail) { AnswerMail.send_mail answer }
 
-
     it "renders the headers" do
       mail.subject.should eq("Codestから解答の送信です。")
       mail.to.should eq(["#{question.email}"])
