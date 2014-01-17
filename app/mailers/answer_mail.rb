@@ -12,7 +12,10 @@ class AnswerMail < ActionMailer::Base
 
     attachments["#{answer.user_file.name}"] = File.read(exe_file)
 
-    @greeting = "#{answer.user_name}様から、#{answer.question.title}の解答が届きました。"
+    @greeting = "#{answer.user_name}様から、#{answer.question.title}の解答が届きました。\n
+                 \n
+                 #{answer.email}宛に、Feedbackを返して返してあげましょう！
+                "
     
     mail to: "#{answer.question.email}", subject: "Codestから解答の送信です。"
   end
