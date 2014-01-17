@@ -29,7 +29,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to report_path @answer }
+        format.html { render "feedback" }
         format.json { render action: 'show', status: :created, location: @answer }
       else
         format.html { render action: 'new' }
