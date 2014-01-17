@@ -1,7 +1,8 @@
-<br/>
-<div class="row">
-  <%= link_to "Create Question!", setting_questions_path, class: "btn menu_btn", rel: "tooltip", title: "問題作成" %>
-</div>
-<hr>
-<%= image_tag "setting.png", id: "overview" %>
 <h1>アナタの手で、エンジニアを育てよう！</h1>
+<%= image_tag "setting.png", id: "overview" %>
+
+<hr/>
+<div class="row">
+  <%= link_to "Create Question!", new_setting_question_path, class: "btn setting_menu_btn", rel: "tooltip", title: "問題を作成する" %>
+  <%= link_to "Index Question!", setting_questions_path, class: "btn setting_menu_btn", rel: "tooltip", title: "問題の一覧を見る" %>
+</div>
