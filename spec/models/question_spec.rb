@@ -54,6 +54,11 @@ describe Question do
         @q.email = nil
         expect(@q).to have(1).errors_on(:email)
       end
+
+      specify "user_fileに何も入れないと登録出来ない" do
+        @q.user_file = nil
+        expect(@q).to have(1).errors_on(:user_file)
+      end
     end
   end
 
