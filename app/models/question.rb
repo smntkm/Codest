@@ -3,7 +3,7 @@ require "bcrypt"
 class Question < ActiveRecord::Base
   attr_accessor :password
 
-  validates :title, :content, :hash_password, :email, presence: true
+  validates :title, :content, :hash_password, :email, :user_file, presence: true
  
   belongs_to :user_file
   has_many :answers
