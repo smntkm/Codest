@@ -36,7 +36,7 @@ describe Answer do
     context "#question" do
       specify "questionを参照出来る" do
         ans = Answer.new
-        q = FactoryGirl.create(:question, user_file: nil)
+        q = FactoryGirl.create(:question)
 
         ans.question = q
 
