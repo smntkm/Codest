@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  validates :user_name, presence: true
+  validates :user_name, :question, :user_file, :email, presence: true
 
   belongs_to :user_file
   belongs_to :question
