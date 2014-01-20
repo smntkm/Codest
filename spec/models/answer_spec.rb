@@ -11,6 +11,18 @@ describe "FactoryGirl" do
 end
 
 describe Answer do
+  describe "Validates" do
+    specify "user_nameが空だと登録出来ない" do
+      answer = FactoryGirl.build(:answer, user_name: nil)
+      expect(answer).to be_invalid
+    end
+
+    specify "emailが空だと登録出来ない"
+    specify "questionが空だと登録出来ない"
+    specify "user_fileが空だと登録出来ない"
+
+  end
+
   context "#relation_to_question" do
     specify "question_idがあるとき、qeustionとの参照が保存される" do
       question = FactoryGirl.create(:question)
