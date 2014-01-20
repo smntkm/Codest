@@ -17,10 +17,18 @@ describe Answer do
       expect(answer).to be_invalid
     end
 
-    specify "emailが空だと登録出来ない"
-    specify "questionが空だと登録出来ない"
-    specify "user_fileが空だと登録出来ない"
-
+    specify "questionが空だと登録出来ない" do
+      answer = FactoryGirl.build(:answer, question: nil)
+      expect(answer).to be_invalid
+    end
+    specify "user_fileが空だと登録出来ない" do
+      answer = FactoryGirl.build(:answer, user_file: nil)
+      expect(answer).to be_invalid
+    end
+    specify "emailが空だと登録出来ない" do
+      answer = FactoryGirl.build(:answer, email: nil)
+      expect(answer).to be_invalid
+    end
   end
 
   context "#relation_to_question" do
