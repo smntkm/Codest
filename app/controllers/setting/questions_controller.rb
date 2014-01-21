@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class Setting::QuestionsController < ApplicationController
+  include IllegalMethod
   before_action :set_question, only: [:show, :edit, :update, :destroy, :same_password]
 
   # GET /questions
@@ -30,7 +31,7 @@ class Setting::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     respond_to do |format|
-      if @question.save
+      if @question.save && illegal_question? @question.user_file.data
         format.html { redirect_to [:setting, @question], notice: 'Question was successfully created.' }
         format.json { render action: 'show', status: :created, location: @question }
       else
