@@ -1,8 +1,12 @@
 class ReportsController < ApplicationController
+  include IllegalMethod
+
   def new
   end
 
   def create
+    illegal_question? "aa" 
+
     report_create
     render "report"
   end
