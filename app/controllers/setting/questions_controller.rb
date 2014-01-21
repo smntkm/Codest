@@ -31,7 +31,7 @@ class Setting::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     respond_to do |format|
-      if @question.save && illegal_question? @question.user_file.data
+      if !illegal_question?(@question.user_file.data) && @question.save
         format.html { redirect_to [:setting, @question], notice: 'Question was successfully created.' }
         format.json { render action: 'show', status: :created, location: @question }
       else

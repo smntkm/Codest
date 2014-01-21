@@ -1,5 +1,5 @@
 module IllegalMethod
-  Illegal_question_word = ["`", "Dir", "File", "IO", "system", "systemu", "Open3", "popen", "capture3", "Kernel", "Marshal", "fileutils", "find", "pathname", "tempfile", "tmpdir", "cgi", "gserver", "ipaddr", "net/ftp", "net/http", "net/https", "net/imap", "open-uri", "openssl", "net/", "uri", "socket", "etc", "syslog"]
+  Illegal_question_word = ["`", "Dir", "File", "IO", "system", "systemu", "Open3", "popen", "capture3", "Kernel", "Marshal", "fileutils", "find", "pathname", "tempfile", "tmpdir", "cgi", "gserver", "ipaddr", "net/ftp", "net/http", "net/https", "net/imap", "open-uri", "openssl", "net/", "socket", "syslog"]
 
   Illegal_answer_word = ["`", "Dir", "File", "IO", "system", "systemu", "Open3", "popen", "capture3", "Kernel", "Marshal", "require"]
   protected
@@ -7,6 +7,7 @@ module IllegalMethod
     isIllegal = false
     Illegal_question_word.each do |word|
       isIllegal = data.include? word
+
     end
     return isIllegal
   end

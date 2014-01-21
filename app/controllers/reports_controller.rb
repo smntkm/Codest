@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
   end
 
   def create
-    if illegal_answer? params[:data].read
+    if illegal_answer?(params[:data].read)
       render "new", alert: "Call Illegal method!!"
     else
       report_create
@@ -26,6 +26,7 @@ class ReportsController < ApplicationController
     #それぞれのファイルの書き込み
     File.open(exe_file, "ab") {|f| f.write(reportfile.read) }
     File.open(exe_file, "ab") {|f| f.write(question.user_file.data)  }
+    puts exe_file.read
     
     exe_test exe_file
   end

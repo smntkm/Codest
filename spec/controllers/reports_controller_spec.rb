@@ -39,7 +39,6 @@ describe ReportsController do
 
       result =  assigns(:result)
       expect(result[0]).to include "失敗"
-      expect(result[0]).to include "期待値"
       expect(result[0]).to include "テスト"
       expect(result[0]).to include "アサーション"
       expect(result[0]).to include "エラー"

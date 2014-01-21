@@ -80,6 +80,9 @@ describe Setting::QuestionsController do
         post :create, {:question => { "title" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
+
+      specify "添付ファイルの内容が不正だと、newに戻る" do
+      end
     end
   end
 
