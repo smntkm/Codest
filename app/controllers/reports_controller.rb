@@ -5,10 +5,12 @@ class ReportsController < ApplicationController
   end
 
   def create
-    illegal_question? "aa" 
-
-    report_create
-    render "report"
+    if illegal_answer? params[:data].read
+      render "new", alert: "Call Illegal method!!"
+    else
+      report_create
+      render "report"
+    end
   end
 
   private
